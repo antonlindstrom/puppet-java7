@@ -6,7 +6,7 @@
 #  apt
 # Sample Usage:
 #  include java7
-class java7 {
+class java7($pkg_version = 'latest') {
   case $::operatingsystem {
     debian: {
       include apt
@@ -20,6 +20,7 @@ class java7 {
         include_src       => true
       }
       package { 'oracle-java7-installer':
+        ensure       => $pkg_version,
         responsefile => '/tmp/java.preseed',
         require      => [
                           Apt::Source['webupd8team'],
@@ -32,6 +33,7 @@ class java7 {
 
       apt::ppa { 'ppa:webupd8team/java': }
       package { 'oracle-java7-installer':
+        ensure       => $pkg_version,
         responsefile => '/tmp/java.preseed',
         require      => [
                           Apt::Ppa['ppa:webupd8team/java'],
