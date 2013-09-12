@@ -11,7 +11,7 @@ Pull requests to add support for other operating systems are welcome.
 
     include java7
 
-Pin version on Java:
+Pin version of Java:
 
     class { 'java7':
       pkg_version => '1.7.0_25',
